@@ -23,3 +23,11 @@ class NeuralNetwork:
 
         # self.weights = [[None for i in range(layer)] for layer in layers[1:]]
 
+    def write(self):
+        pass
+
+    def test(self):
+        pass
+
+    def pack_propogation(self):
+        pass
