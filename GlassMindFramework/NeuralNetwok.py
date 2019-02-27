@@ -1,4 +1,5 @@
 from GlassMindFramework.Neuron import Neuron
+import pickle
 
 
 class NeuralNetwork:
@@ -23,8 +24,11 @@ class NeuralNetwork:
 
         # self.weights = [[None for i in range(layer)] for layer in layers[1:]]
 
-    def write(self):
-        pass
+    def write(self, file):
+        with open(file, "wb") as f:
+            # numero 0 - layers, numero 1 - weights
+            pickle.dump([[len(l) for l in self.weights],
+                         self.weights], f)
 
     def test(self):
         pass
