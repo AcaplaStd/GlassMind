@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1000;
+    position: absolute;
+    display: flex;
+    box-sizing: border-box;
+    transition: all 500ms ease-in-out;
+    padding: 40px 0 0 50px;
+    align-items: center;
+}
+
+.navbar .nav-item {
+    float: left;
+    padding: 10px;
+    font-size: 2em;
+    color: #BDBDBD;
+    margin-right: 30px;
+    transition: all 1000ms ease 0s;
+}
+
+.navbar .nav-title {
+    font-size: 2.5em;
+    color: #FFFFFF;
+    margin-right: 50px;
+}
+
+.navbar .nav-item:hover:not(.active) {
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.navbar .nav-item.active {
+    color: #FFFFFF;
+}
+
+section {
+    padding-top: 100px;
+}
+
+.nn-cover {
+    background: linear-gradient(to top left, #4A148C, #B71C1C);
+    color: #FFFFFF;
+}
+
+.nn-content {
+    background: #212121;
+    color: #FFFFFF;
+}
+
+/* Whitemode */
+
+.whitemode .nn-content {
+    background: #FAFAFA;
+    color: #000000;
+}
+
+.whitemode.viewing-page-2 .navbar .nav-item {
+    font-size: 2em;
+    color: #BDBDBD;
+    margin-right: 30px;
+}
+
+.whitemode.viewing-page-2 .navbar .nav-title {
+    font-size: 2.5em;
+    color: #000000;
+    margin-right: 50px;
+}
+
+.whitemode.viewing-page-2 .navbar .nav-item:hover:not(.active) {
+    color: #000000;
+    cursor: pointer;
+}
+
+.whitemode.viewing-page-2 .navbar .nav-item.active {
+    color: #000000;
+}
