@@ -5,7 +5,7 @@ from GlassMind import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('some_page.html', is_whitemode=True)
+    return render_template('some_page.html', is_whitemode=False)
 
 
 @app.route('/static/css/<path:path>')
