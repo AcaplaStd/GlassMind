@@ -1,6 +1,6 @@
 from flask import *
-from GlassMind import app
 
+app = Flask(__name__)
 
 @app.route('/')
 @app.route('/index')
