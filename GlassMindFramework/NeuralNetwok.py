@@ -30,7 +30,7 @@ class NeuralNetwork:
             pickle.dump([[len(l) for l in self.weights],
                          self.weights], f)
 
-    def test(self):
+    def test(self, input_data):
         pass
 
     def pack_propogation(self):
