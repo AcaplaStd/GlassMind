@@ -14,6 +14,7 @@ body {
     transition: all 500ms ease-in-out;
     padding: 40px 0 0 50px;
     align-items: center;
+    font-weight: 300;
 }
 
 .navbar .nav-item {
@@ -41,11 +42,11 @@ body {
 }
 
 section {
-    padding-top: 100px;
+    padding: 100px 70px 40px 70px;
 }
 
 .nn-cover {
-    background: linear-gradient(to top left, #4A148C, #B71C1C);
+    background: linear-gradient(to top left, #4527A0, #B71C1C);
     color: #FFFFFF;
 }
 

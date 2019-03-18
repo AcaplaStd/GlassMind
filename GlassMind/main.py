@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('some_page.html', is_whitemode=False)
+    return render_template('some_page.html', is_whitemode=True)
 
 
 @app.route('/static/css/<path:path>')
