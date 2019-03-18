@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('send_css', path='onepage-scroll.css') }}">
+    <script type="text/javascript" src="{{ url_for('send_js', path='jquery.onepage-scroll.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $(".scrollable").onepage_scroll({
+                sectionContainer: "section",
+                responsiveFallback: 600,
+                loop: false,
+                pagination: false
+            });
+        });
+
+    </script>
+{% endblock %}
+
+
+{% block custom_body_classes %} two_part_page{% endblock %}
+
+
+{% block content %}
+<div class="scrollable">
+    <section class="main-color">
+        <p align="center">Testing Neural Network</p>
+    </section>
+    <section class="nn-content">
+        <h1>training&trying here</h1>
+    </section>
+</div>
+{% endblock %}

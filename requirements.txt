@@ -1,2 +1,8 @@
 flask
 flask-wtf
+WTForms
+psycopg2
+flask-sqlalchemy
+flask-migrate
+SQLAlchemy
+flask-login

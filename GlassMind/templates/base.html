@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if title %}{{ title }} - {% endif %}GlassMind</title>
+    <script type="text/javascript" src="{{ url_for('send_js', path='jquery-3.3.1.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('send_css', path='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('send_css', path='Roboto.css') }}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body class="{% if is_whitemode == true %}whitemode{% endif %}{% for body_class in body_classes %} {{ body_class }}{% endfor %}{% block custom_body_classes %}{% endblock %}">
+<div class="navbar">
+    <div class="nav-item nav-title"><a>GlassMind</a></div>
+    <div class="nav-item active"><a>Home</a></div>
+    <div class="nav-item"><a>Explore</a></div>
+    <div class="nav-item"><a>About</a></div>
+    {% if current_user.is_anonymous %}
+    <div class="nav-item"><a href="{{ url_for('login') }}">Login</a></div>
+    {% else %}
+    <div class="nav-item">{{ current_user.username }}</div>
+    <div class="nav-item"><a href="{{ url_for('logout') }}">Logout</a></div>
+    {% endif %}
+</div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% block content %}
+{% endblock %}
+</body>
+</html>
