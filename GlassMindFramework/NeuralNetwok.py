@@ -1,4 +1,4 @@
-from GlassMindFramework.Neuron import Neuron
+from .Neuron import Neuron
 import pickle
 
 
