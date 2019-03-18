@@ -8,6 +8,6 @@
         {{ rend.render_field(form.username) }}
         {{ rend.render_field(form.email) }}
         {{ rend.render_field(form.password) }}
-        <p>{{ form.submit() }}</p>
+        {{ rend.render_submit(form.submit) }}
     </form>
 {% endblock %}

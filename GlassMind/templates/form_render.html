@@ -1,5 +1,5 @@
 {% macro render_field(field, label_visible=true) -%}
-    <div class="md-input-group {{ kwargs.pop('class_', '') }}">
+    <div class="md-input {{ kwargs.pop('class_', '') }}">
         {{ field(class_='', **kwargs) }}
         <span class="highlight"></span>
         <span class="bar"></span>
@@ -10,6 +10,19 @@
             {% endfor %}
         {% endif %}
     </div>
+{%- endmacro %}
+
+{% macro render_submit(field) -%}
+    {{ field(class_='md-btn md-btn-raised md-btn-ripple', **kwargs) }}
+    {% if field.errors %}
+        {% for e in field.errors %}
+            <span style="color: red;">[{{ e }}]</span>
+        {% endfor %}
+    {% endif %}
+{%- endmacro %}
+
+{% macro render_std_button(text, onclick='', class='') -%}
+    <button type="button" class="md-btn md-btn-raised md-btn-ripple {{ class }}" onclick="{{ onclick }}">{{ text }}</button>
 {%- endmacro %}
 
 <!--TODO: Доделать часть снизу-->
