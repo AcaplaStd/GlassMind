@@ -1,7 +1,6 @@
 {% macro render_field(field, label_visible=true) -%}
-    <div class="md-input {{ kwargs.pop('class_', '') }}">
+    <div class="md-input">
         {{ field(class_='', **kwargs) }}
-        <span class="highlight"></span>
         <span class="bar"></span>
         <label for="{{ field.id }}">{{ field.label.text }}</label>
         {% if field.errors %}
@@ -21,28 +20,23 @@
     {% endif %}
 {%- endmacro %}
 
-{% macro render_std_button(text, onclick='', class='') -%}
-    <button type="button" class="md-btn md-btn-raised md-btn-ripple {{ class }}" onclick="{{ onclick }}">{{ text }}</button>
+{% macro render_std_button(text, redirect_to='', onclick='') -%}
+    <button type="button" class="md-btn md-btn-raised md-btn-ripple {{ class_ }}" onclick="{% if redirect_to is defined and redirect_to|length %}window.location='{{ url_for(redirect_to) }}'{% else %}{{ onclick }}{% endif %}">{{ text }}</button>
+{%- endmacro %}
+
+{% macro render_checkbox(field, label_visible=true) -%}
+    <label class="md-checkbox">
+        {{ field(type='checkbox', **kwargs) }}
+        <span>{{ field.label.text }}</span>
+    </label>
+    {% if field.errors %}
+        {% for e in field.errors %}
+            <span style="color: red;">[{{ e }}]</span>
+        {% endfor %}
+    {% endif %}
 {%- endmacro %}
 
 <!--TODO: Доделать часть снизу-->
-
-{# Renders checkbox fields since they are represented differently in bootstrap
-    Params:
-        field - WTForm field (there are no check, but you should put here only BooleanField.
-        kwargs - pass any arguments you want in order to put them into the html attributes.
-        There are few exceptions: for - for_, class - class_, class__ - class_
-
-    Example usage:
-        {{ macros.render_checkbox_field(form.remember_me) }}
- #}
-{% macro render_checkbox_field(field) -%}
-    <div class="checkbox">
-        <label>
-            {{ field(type='checkbox', **kwargs) }} {{ field.label }}
-        </label>
-    </div>
-{%- endmacro %}
 
 {# Renders radio field
     Params:

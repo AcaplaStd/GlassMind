@@ -6,8 +6,23 @@
     <script type="text/javascript" src="{{ url_for('send_js', path='jquery-3.3.1.min.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('send_css', path='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('send_css', path='Roboto.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script type="text/javascript" src="{{ url_for('send_js', path='Notify.js') }}"></script>
     {% block head %}
     {% endblock %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        Notify("{{ message }}");
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block documentready %}
+            {% endblock %}
+        });
+    </script>
 </head>
 <body class="{% if is_whitemode == true %}whitemode{% endif %}{% for body_class in body_classes %} {{ body_class }}{% endfor %}{% block custom_body_classes %}{% endblock %}">
 <div class="navbar">
@@ -22,15 +37,7 @@
     <div class="nav-item"><a href="{{ url_for('logout') }}">Logout</a></div>
     {% endif %}
 </div>
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
+<div id="notifications"></div>
 {% block content %}
 {% endblock %}
 </body>

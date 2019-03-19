@@ -6,10 +6,14 @@ from .models import User
 from werkzeug.urls import url_parse
 
 
+def render_template_params(template_name_or_list, **context):
+    return render_template(template_name_or_list, is_whitemode=False, **context)
+
+
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('home_page.html', is_whitemode=True)
+    return render_template_params('home_page.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -26,8 +30,9 @@ def login():
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
+        flash('Login success!')
         return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template_params('login.html', title='Sign In', form=form)
 
 
 @app.route('/logout')
@@ -48,7 +53,7 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template_params('register.html', title='Register', form=form)
 
 
 @app.route('/static/css/<path:path>')
