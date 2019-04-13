@@ -7,7 +7,7 @@
         {{ form.hidden_tag() }}
         {{ rend.render_field(form.username) }}
         {{ rend.render_field(form.password) }}
-        {{ rend.render_checkbox(form.remember_me) }}
+        <!--{{ rend.render_checkbox(form.remember_me) }}-->
         {{ rend.render_submit(form.submit) }}
         {{ rend.render_std_button('Зарегистрироваться!', redirect_to="register") }}
     </form>

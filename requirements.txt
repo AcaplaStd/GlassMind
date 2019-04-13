@@ -8,4 +8,5 @@ flask-migrate
 SQLAlchemy
 flask-login
 gunicorn
-
+passlib
+bcrypt
