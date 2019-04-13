@@ -13,4 +13,4 @@ login = LoginManager(app)
 login.login_view = 'login'
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
-from GlassMind import routes, models
+from app import routes, models
